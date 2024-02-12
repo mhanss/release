@@ -2315,8 +2315,6 @@ tests:
     cluster_profile: vsphere-2
     env:
       FIPS_ENABLED: "true"
-    test:
-    - chain: openshift-e2e-test-qe
     workflow: cucushift-agent-vsphere-install-compact
 - as: vsphere-agent-disconnected-compact-f14
   cron: 22 4 8,23 * *

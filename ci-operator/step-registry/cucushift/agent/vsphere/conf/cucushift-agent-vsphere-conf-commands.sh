@@ -106,7 +106,6 @@ platform:
         networks:
         - ${vsphere_portgroup}
         resourcePool: /${vsphere_datacenter}/host/${vsphere_cluster}/Resources
-        folder: /${vsphere_datacenter}/vm/${cluster_name}
       zone: changeme-zone
     vcenters:
     - datacenters:
