@@ -3252,7 +3252,7 @@ buildFarm:
       - openshift-cluster-nfd-operator-release-4.14-periodics.yaml
       - openshift-frr-release-4.19-periodics.yaml
       - openshift-frr-release-4.18-periodics.yaml
-      - openshift-qe-baremetal-qe-infra-monitoring-periodics.yaml
+      - openshift-eng-baremetal-qe-infra-monitoring-periodics.yaml
       - openshift-cluster-node-tuning-operator-release-4.9-periodics.yaml
       - openshift-aws-efs-csi-driver-operator-release-4.13-periodics.yaml
       - openshift-aws-efs-csi-driver-operator-release-4.11-periodics.yaml
@@ -4371,7 +4371,7 @@ buildFarm:
       - openshift-kubernetes-release-4.12-postsubmits.yaml
       - openshift-console-release-4.5-postsubmits.yaml
       - openshift-federation-v2-operator-master-postsubmits.yaml
-      - openshift-qe-baremetal-qe-infra-staging-postsubmits.yaml
+      - openshift-eng-baremetal-qe-infra-staging-postsubmits.yaml
       - kube-reporting-metering-operator-master-postsubmits.yaml
       - stolostron-thanos-metrics-analyzer-main-postsubmits.yaml
       - redhat-cne-hw-event-proxy-operator-main-postsubmits.yaml
@@ -9021,7 +9021,7 @@ buildFarm:
       - openshift-cluster-api-provider-azure-release-4.11-postsubmits.yaml
       - openshift-cluster-api-provider-azure-release-4.12-postsubmits.yaml
       - openshift-cluster-control-plane-machine-set-operator-release-4.20-postsubmits.yaml
-      - openshift-qe-baremetal-qe-infra-master-postsubmits.yaml
+      - openshift-eng-baremetal-qe-infra-master-postsubmits.yaml
       - openshift-k8s-prometheus-adapter-release-4.14-postsubmits.yaml
       - openshift-kni-cnf-features-deploy-master-postsubmits.yaml
       - openshift-cluster-api-provider-azure-release-4.13-postsubmits.yaml
@@ -14986,7 +14986,7 @@ buildFarm:
       - stolostron-must-gather-release-2.9-postsubmits.yaml
       - stolostron-must-gather-release-2.8-postsubmits.yaml
       - stolostron-must-gather-release-2.7-postsubmits.yaml
-      - openshift-qe-baremetal-qe-infra-staging-presubmits.yaml
+      - openshift-eng-baremetal-qe-infra-staging-presubmits.yaml
       - stolostron-must-gather-release-2.4-postsubmits.yaml
       - stolostron-must-gather-release-2.6-postsubmits.yaml
       - stolostron-governance-policy-addon-controller-release-2.7-presubmits.yaml
@@ -20663,7 +20663,7 @@ buildFarm:
       - openshift-sriov-cni-release-4.13-presubmits.yaml
       - openshift-sriov-cni-release-4.12-presubmits.yaml
       - openshift-sriov-cni-release-4.11-presubmits.yaml
-      - openshift-qe-baremetal-qe-infra-master-presubmits.yaml
+      - openshift-eng-baremetal-qe-infra-master-presubmits.yaml
       - openshift-pipelines-release-tests-release-v1.16-periodics.yaml
       - openshift-pipelines-release-tests-release-v1.11-periodics.yaml
       - openshift-pipelines-release-tests-release-v1.13-periodics.yaml
