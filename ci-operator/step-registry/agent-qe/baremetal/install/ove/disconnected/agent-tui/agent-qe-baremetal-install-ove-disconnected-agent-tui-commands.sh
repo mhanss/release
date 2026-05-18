@@ -9,7 +9,7 @@ set -o nounset
 trap 'CHILDREN=$(jobs -p); if test -n "${CHILDREN}"; then kill ${CHILDREN} && wait; fi' TERM ERR
 
 [ -z "${AUX_HOST}" ] && { echo "\$AUX_HOST is not filled. Failing."; exit 1; }
-[ ! -f "${SHARED_DIR}/proxy-conf.sh" ] && { echo "Proxy conf file is not found. Failing."; exit 1; }
+#[ ! -f "${SHARED_DIR}/proxy-conf.sh" ] && { echo "Proxy conf file is not found. Failing."; exit 1; }
 
 if ! whoami &>/dev/null; then
   if [[ -w /etc/passwd ]]; then
@@ -19,8 +19,11 @@ if ! whoami &>/dev/null; then
     exit 1
   fi
 fi
+if [ "${DISCONNECTED}" == "true" ]; then
+  source "${SHARED_DIR}/proxy-conf.sh"
+fi
 
-source "${SHARED_DIR}/proxy-conf.sh"
+sed -E -i ':a;N;$!ba;s/\.rendezvous_node\(\)[[:space:]]*\n[[:space:]]*\.select_ip\(\)/.non_rendezvous_node(self.rendezvous_ip)/g' agent-tui/tui_driver/driver.py
 
 RENDEZVOUS_NODE="yes"
 SSH_PRIVATE_KEY=$(<"${CLUSTER_PROFILE_DIR}"/ssh-privatekey)

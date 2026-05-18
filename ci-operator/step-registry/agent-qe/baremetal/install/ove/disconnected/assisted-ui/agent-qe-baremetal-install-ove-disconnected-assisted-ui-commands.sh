@@ -10,9 +10,11 @@ trap 'CHILDREN=$(jobs -p); if test -n "${CHILDREN}"; then kill ${CHILDREN} && wa
 # Save exit code for must-gather to generate junit
 trap 'echo "$?" > "${SHARED_DIR}/install-status.txt"' TERM ERR
 
-[ ! -f "${SHARED_DIR}/proxy-conf.sh" ] && { echo "Proxy conf file is not found. Failing."; exit 1; }
+#[ ! -f "${SHARED_DIR}/proxy-conf.sh" ] && { echo "Proxy conf file is not found. Failing."; exit 1; }
 
-source "${SHARED_DIR}/proxy-conf.sh"
+if [ "${DISCONNECTED}" == "true" ]; then
+  source "${SHARED_DIR}/proxy-conf.sh"
+fi
 CLUSTER_NAME=$(<"${SHARED_DIR}/cluster_name")
 BASE_DOMAIN=$(<"${CLUSTER_PROFILE_DIR}/base_domain")
 PULL_SECRET=$(jq -c -n '{"auths":{"test":{"auth":"dXNlcjpwYXNzCg=="}}}')
@@ -37,8 +39,8 @@ cp "/tmp/kubeconfig" "${SHARED_DIR}/kubeconfig"
 cp "/tmp/kubeadmin-password" "${SHARED_DIR}/kubeadmin-password"
 
 export KUBECONFIG=/tmp/kubeconfig
-echo "Forcing a 2.5-hour delay to allow other machines to join the bootstrap node."
-sleep 2.5h
+echo "Forcing a 30mins delay to allow other machines to join the bootstrap node."
+sleep 30m
 
 echo "Checking cluster installation progress by verifying all cluster operators are available and stable."
 oc adm wait-for-stable-cluster --minimum-stable-period=1m --timeout=60m

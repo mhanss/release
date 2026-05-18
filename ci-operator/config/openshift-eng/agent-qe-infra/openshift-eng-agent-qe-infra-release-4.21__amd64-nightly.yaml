@@ -883,6 +883,24 @@ tests:
     test:
     - chain: cucushift-installer-check-cluster-health
     workflow: agent-qe-nutanix-disconnected
+- as: baremetal-ove-compact-agent-ipv4-f60
+  capabilities:
+  - intranet
+  cron: 2 6 16 */2 *
+  steps:
+    cluster_profile: equinix-ocp-metal-qe
+    env:
+      AGENT_ISO: agent-ove-5.x86_64.iso
+      AUX_HOST: openshift-qe-metal-ci.arm.eng.rdu2.redhat.com
+      RESERVE_BOOTSTRAP: "false"
+      VENDOR: hpe
+      architecture: amd64
+      ipv4_enabled: "true"
+      ipv6_enabled: "false"
+      masters: "3"
+      workers: "0"
+      DISCONNECTED: "false"
+    workflow: agent-qe-baremetal-install-ove-disconnected
 - as: baremetal-ove-compact-agent-ipv4-disc-f60
   capabilities:
   - intranet
@@ -890,17 +908,15 @@ tests:
   steps:
     cluster_profile: equinix-ocp-metal-qe
     env:
-      AGENT_ISO: agent-ove-4.21.x86_64.iso
+      AGENT_ISO: agent-ove.x86_64.iso
       AUX_HOST: openshift-qe-metal-ci.arm.eng.rdu2.redhat.com
       RESERVE_BOOTSTRAP: "false"
-      VENDOR: dell
+      VENDOR: hpe
       architecture: amd64
       ipv4_enabled: "true"
       ipv6_enabled: "false"
       masters: "3"
       workers: "0"
-    test:
-    - chain: cucushift-installer-check-cluster-health
     workflow: agent-qe-baremetal-install-ove-disconnected
 - as: baremetal-ove-compact-disc-konflux
   capabilities:
