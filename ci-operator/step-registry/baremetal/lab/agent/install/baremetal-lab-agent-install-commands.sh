@@ -57,9 +57,11 @@ PULL_SECRET_PATH=${CLUSTER_PROFILE_DIR}/pull-secret
 INSTALL_DIR="${INSTALL_DIR:-/tmp/installer}"
 mkdir -p "${INSTALL_DIR}"
 
-echo "Installing from initial release ${OPENSHIFT_INSTALL_RELEASE_IMAGE_OVERRIDE}"
-oc adm release extract -a "$PULL_SECRET_PATH" "${OPENSHIFT_INSTALL_RELEASE_IMAGE_OVERRIDE}" \
+echo "Installing from initial release registry.build05.ci.openshift.org/ci-ln-niqmjct/release:latest"
+oc adm release extract -a "$PULL_SECRET_PATH" registry.build05.ci.openshift.org/ci-ln-niqmjct/release:latest \
    --command=openshift-install --to=/tmp
+
+/tmp/openshift-install version
 
 # We change the payload image to the one in the mirror registry only when the mirroring happens.
 # For example, in the case of clusters using cluster-wide proxy, the mirroring is not required.

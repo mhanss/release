@@ -61,9 +61,9 @@ ref:
   - name: IMAGE_POLICY_DISABLED
     default: "true"
     documentation: "Indicates an Image Policy disabled cluster for nightly builds. Set to 'false' for stable builds."
-  dependencies:
-    - name: "release:latest"
-      env: OPENSHIFT_INSTALL_RELEASE_IMAGE_OVERRIDE
+#  dependencies:
+#    - name: "release:latest"
+#      env: OPENSHIFT_INSTALL_RELEASE_IMAGE_OVERRIDE
   documentation: |-
     The baremetal-lab-agent-install will provision a baremetal cluster using the agent installer, given the configuration assets
     prepared in the earlier steps.
